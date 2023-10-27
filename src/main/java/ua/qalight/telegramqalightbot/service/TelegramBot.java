@@ -5,13 +5,19 @@ import lombok.SneakyThrows;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
+import org.telegram.telegrambots.meta.api.methods.commands.SetMyCommands;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Update;
+import org.telegram.telegrambots.meta.api.objects.commands.BotCommand;
+import org.telegram.telegrambots.meta.api.objects.commands.scope.BotCommandScopeDefault;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.InlineKeyboardMarkup;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 import ua.qalight.telegramqalightbot.config.BotConfig;
 import ua.qalight.telegramqalightbot.enums.Emoji;
 import ua.qalight.telegramqalightbot.utils.KeyboardRow;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Component
 //@AllArgsConstructor
@@ -22,6 +28,7 @@ public class TelegramBot extends TelegramLongPollingBot {
     public TelegramBot(BotConfig config) {
         super(config.getBotToken());
         this.config = config;
+
     }
 
     @SneakyThrows
